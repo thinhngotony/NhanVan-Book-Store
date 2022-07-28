@@ -1,0 +1,414 @@
+﻿v2.5 R0  2020/01/18
+	* 增加BLE通訊介面
+	* 因應BLE Lib .NetFramework改為 4.5版本
+	* 變更版本號的命名方式
+
+v2.0.4 R1  2020/01/09
+	* UHF class
+		修正之前統一API名稱時，ReadTag功能帶入參數順序錯誤造成無法讀取失敗的問題
+
+v2.0.4 R0  2019/12/19
+	* Enumeration
+		變更列舉名稱 RfInputSensitivityLevel => RfSensitivityLevel
+		變更列舉 OutputInterface 內的成員名稱 HIDnVCOM => HID_N_VCOM
+
+	* UHF class
+		WriteEPC 變更參數名稱	accessPasswordHexString => hexAccessPassword
+								selectedTagEpcHexString => hexSelectedPcEpc
+
+		ReadTag 變更參數名稱	accessPasswordHexString => hexAccessPassword
+								selectedTagEpcHexString => hexSelectedPcEpc
+								readBank => memoryBank
+								length => readLength
+
+		增加ReadTag多載 ReadTag(ByVal hexSelectedPcEpc As String, 
+								ByVal hexAccessPassword As String, 
+								ByVal memoryBank As MemoryBank, 
+								ByVal startWordAdress As Integer, 
+								ByVal readLength As Integer) As Byte()
+
+		WriteSelectTag Function名稱變更為 WriteTag (變為多載)
+		WriteTag 變更參數名稱   accessPasswordHexString => hexAccessPassword
+								selectedTagEpcHexString => hexSelectedPcEpc
+								writeBank => memoryBank
+
+		SetRfPower 變更參數名稱 isTemporary => temporary
+								rfPowerValue => rfPower
+		GetRfPower 變更參數名稱 isTemporary => temporary 
+
+		SetRfSensitivity 變更參數名稱   isTemporary => temporary
+										rfSensitivityLevel => sensitivity
+		GetRfSensitivity 變更參數名稱   isTemporary => temporary
+
+		GetFrequency 變更參數名稱	isTemporary => temporary
+		SetFrequency 變更參數名稱   isTemporary => temporary
+									frequencySet => frequencyMHzList
+									
+		GetQValue 變更參數名稱 isTemporary => temporary
+		SetQValue 變更參數名稱 isTemporary => temporary
+
+		合併 SetSession & SetTarget 為 Public Function SetSessionAndTarget(ByVal temporary As Boolean, ByVal session As Session, ByVal target As Target) As Boolean
+		合併 GetSession & GetTarget 為 Public Sub GetSessionAndTarget(ByVal temporary As Boolean, ByRef session As Session, ByRef target As Target)
+
+		變更Function名稱 SetTagPresentRepeatInterval => SetTagPresentedRepeatInterval
+		變更Function名稱 GetTagPresentRepeatInterval => GetTagPresentedRepeatInterval
+		SetTagPresentedRepeatInterval 變更參數名稱 isTemporary => temporary
+		GetTagPresentedRepeatInterval 變更參數名稱 isTemporary => temporary
+
+		變更Function名稱 SetTagRemoveThreshold => SetTagRemovedThreshold
+		變更Function名稱 GetTagRemoveThreshold => GetTagRemovedThreshold
+		SetTagRemovedThreshold 變更參數名稱 isTemporary => temporary
+		GetTagRemovedThreshold 變更參數名稱 isTemporary => temporary
+
+		SetInventoryRoundInterval 變更參數名稱 isTemporary => temporary
+		GetInventoryRoundInterval 變更參數名稱 isTemporary => temporary
+
+		LockTag 變更參數名稱 accessPassword => hexAccessPassword
+
+		KillTag 變更參數名稱 accessPassword => hexAccessPassword
+							 killPassword => hexKillPassword
+
+		Function SetInventoryActiveMode 移除 (移至TS100、TS800)
+		Function GetInventoryActiveMode 移除 (移至TS100、TS800)
+
+	* TS100 class
+		StartInventoryEx 變更參數名稱 tagDataEncodeType => filterTypes
+		
+		SetInventoryActiveMode 變更參數名稱 isTemporary => temporary		
+		GetInventoryActiveMode 增加參數 (ByVal temporary As Boolean)
+
+		SetBuzzerOperationMode 變更參數名稱 isTemporary => temporary
+		GetBuzzerOperationMode 變更參數名稱 isTemporary => temporary
+
+		GetFilter 變更參數名稱 isTemporary => temporary
+		SetFilter 變更參數名稱 isTemporary => temporary
+							   filterTypeSet => filterTypes
+
+		GetEventType 變更參數名稱 isTemporary => temporary
+		SetEventType 變更參數名稱 isTemporary => temporary
+
+		SetOutputInterface 變更參數名稱 isTemporary => temporary
+										outputInterfaceSet => outputInterfaces
+        GetOutputInterface 變更參數名稱 isTemporary => temporary
+										outputInterfaceSet => outputInterfaces
+
+		SetPostDataDelimiter 變更參數名稱 isTemporary => temporary
+							              delimiterSet => postDataDelimiter
+        GetPostDataDelimiter 變更參數名稱 isTemporary => temporary
+		
+		SetMemoryBankSelection 變更參數名稱 isTemporary => temporary
+							                memoryBankSet => memoryBankSelections
+	    GetMemoryBankSelection 變更參數名稱 isTemporary => temporary
+
+		新增 GetBleRomVersion 方法
+		新增 SetBleDeviceName 方法
+		新增 GetBleDeviceName 方法
+
+	* TS800 class
+		同TS100  將全部的 isTemporary 參數名稱改為 temporary
+
+		新增 GetBleRomVersion 方法
+		新增 SetBleDeviceName 方法
+		新增 GetBleDeviceName 方法
+
+		GetInventoryActiveMode 增加參數 (ByVal temporary As Boolean)
+
+v2.0.3 R1  2019/12/11
+	* UHF class
+		變更 SetInventoryActiveMode 設定參數
+			增加 ByVal isTemporary As Boolean
+
+v2.0.3 R0  2019/12/06
+	* TS100 Class
+		變更 SetPostDataDelimiter 設定參數	
+			ByVal delimiter As PostDataDelimiter	=>	ByVal delimiterSetAs HashSet(Of PostDataDelimiter)
+		變更 GetPostDataDelimiter 回傳參數	
+			As PostDataDelimiter	=>	As	HashSet(Of PostDataDelimiter)
+		
+		變更 SetMemoryBankSelection 設定參數
+			ByVal memoryBank As MemoryBankSelection	=>	ByVal memoryBankSet HashSet(Of MemoryBankSelection)
+
+		變更 GetMemoryBankSelection 回傳參數
+			As MemoryBankSelection	=>	As	HashSet(Of MemoryBankSelection)
+
+	* Enumerations
+		變更 MemoryBankSelection 列舉值內容
+			移除 PC_EPC = &H3
+			移除 EPC_TID = &H6
+			移除 PC_EPC_TID = &H7
+			新增 EPC_ASCII = &H80
+
+		變更 PostDataDelimiter 列舉值內容
+		    移除 None = &H0
+			移除 Carriage_Line = &H30
+			新增 Tab = &H40
+
+v2.0.2 R3  2019/11/15
+	* TCPDataReceiver Class
+		修正解析時會有變數類型不同造成溢位的錯誤
+
+v2.0.2 R2  2019/11/11
+	* UHF Class
+		WiFi相關移出到各支援機種，有以下指令
+			SetWiFiSettings (2個多載)
+			GetWiFiMacAddress
+			GetWiFiApList
+		SetRfPower增加參數範圍限制 1~27，非此範圍的數值會產生Error事件回報參數錯誤
+		SetTagPresentRepeatInterval 增加參數範圍檢查 0~254，非此範圍的數值會產生Error事件回報參數錯誤
+		GetTagPresentRepeatInterval 改為 MustOverride 方法，因為255的時候default表現會依照機種有所不同
+		SetTagRemoveThreshold 增加參數範圍檢查 0~254，非此範圍的數值會產生Error事件回報參數錯誤
+		GetTagRemoveThreshold 加入內部獲得255時  回傳5 (default值)
+		SetInventoryRoundInterval 增加參數範圍檢查 0~254，非此範圍的數值會產生Error事件回報參數錯誤
+		GetInventoryRoundInterval 加入內部獲得255時  回傳0 (default值)
+		SetInventoryActiveMode 增加參數檢查  須符合列舉值，非屬於列舉的數值會產生Error事件回報參數錯誤
+		GetInventoryActiveMode 執行 _um800l.GetActiveMode() 有失敗的可能，會回傳Nothing，當Nothing時給予回傳值-1當作失敗回報
+		Set/Get RfPower的Function修正內部的值轉換錯誤問題
+
+	* TS800
+		新增 Set/Get CommandTriggerState  
+			GetCommandTriggerState有可能會取得Nothing，當取得Nothing時以 -1 回傳結果
+		新增 Set/Get ScanMode  與參數對應的列舉值(僅TS800有此方法與列舉值)
+		變更 Set/Get TriggerType的參數 triggerType As TriggerType  =>  As HashSet(Of TriggerType)
+		SetIOState 增加參數檢查  須符合列舉值，非屬於列舉的數值會產生Error事件回報參數錯誤
+		ControlBuzzer 增加參數檢查  須符合列舉值，非屬於列舉的數值會產生Error事件回報參數錯誤
+		SetBuzzerOperationMode 增加參數檢查  須符合列舉值，非屬於列舉的數值會產生Error事件回報參數錯誤
+		SetOutputInterface 增加參數檢查  須符合列舉值，非屬於列舉的數值會產生Error事件回報參數錯誤
+
+	* TS100
+	    ControlBuzzer 增加參數檢查  須符合列舉值，非屬於列舉的數值會產生Error事件回報參數錯誤
+		SetBuzzerOperationMode 增加參數檢查  須符合列舉值，非屬於列舉的數值會產生Error事件回報參數錯誤
+		SetOutputInterface 增加參數檢查  須符合列舉值，非屬於列舉的數值會產生Error事件回報參數錯誤
+		SetMemoryBankSelection 增加參數檢查  須符合列舉值，非屬於列舉的數值會產生Error事件回報參數錯誤
+		SetEventType 增加參數檢查  須符合列舉值，非屬於列舉的數值會產生Error事件回報參數錯誤
+		SetPostDataDelimiter 增加參數檢查  須符合列舉值，非屬於列舉的數值會產生Error事件回報參數錯誤
+		刪除 InitializeSettings 方法
+
+	* Parameters:
+		新增列舉值 State
+		變更EventType列舉內容的值
+			TagPresented = &HFE
+			TagPresentedWithRemoved = &HDE
+			TagPresentedEx = &H0
+
+v2.0.2 R1  2019/11/04
+	* 變更列舉名稱 ErrorRespondCode => ErrorCode	
+
+v2.0.2 R0  2019/10/30
+	* UHF Class:
+		方法名稱變更 GetRomVersion => GetFirmwareVersion
+		移除 GetDeviceName
+		WriteEPC 參數名稱變更 passwordHexString => accessPasswordHexString
+		WriteTag 參數名稱變更 passwordHexString => accessPasswordHexString
+		WriteTag 多形中指定TAG的方法名稱變更為 WriteSelectTag 且 參數名稱變更 passwordHexString => accessPasswordHexString
+		ReadTag 參數名稱變更 passwordHexString => accessPasswordHexString
+		方法名稱變更 SetQBeginValue => SetQValue
+		方法名稱變更 GetQBeginValue => GetQValue
+		方法名稱變更 SetTagPresentEventThreshold => SetTagPresentRepeatInterval 且 參數 second 變更為 hundredMilliSeconds
+		方法名稱變更 GetTagPresentEventThreshold => GetTagPresentRepeatInterval
+		方法名稱變更 SetTagRemoveEventThreshold => SetTagRemoveThreshold 且 參數 threshold (MissingInventoryThreshold) 變更為inventoryRound (Integer)
+		移除 MissingInventoryThreshold 列舉
+		方法名稱變更 GetTagRemoveEventThreshold => GetTagRemoveThreshold
+		新增方法 Get/Set InventoryRoundInterval 
+		新增方法 Get/Set InventoryActiveMode
+		新增方法 KillTag
+		新增方法 LockTag
+		移除方法 MustOverride InitializeSettings  (因為TS800不需要了  TS100改為單獨建立此方法)
+
+	* TS100 Class:		
+		InitializeSettings  不再是必須複寫的方法  改為TS100獨有
+
+	* TS800 Class:
+		移除方法 InitializeSettings
+
+	* Parameters:
+		MemoryBank增加列舉值
+	        KILL_PASSWORD = 4
+			ACCESS_PASSWORD = 5
+		新增列舉值 ActiveMode
+		新增列舉值 LockAction		
+
+v2.0.1 R3  2019/09/16
+	* UHF WriteEPC (有包含selectedTagEPCHexString)  修正送出參數長度錯誤時，仍回應執行成功的BUG
+
+v2.0.1 R2  2019/09/06
+	* UHF class 增加接收62封包的Event	(TS800尚未支援)
+	* 更新UM800LLibrary
+	* Parameters名稱變更 TCPTagData => DecodedTagData
+
+v2.0.1 R1  2019/09/02
+	* TS800 新增Set/Get BuzzerOperationMode  (其中ONCE在TS800並不支援)
+	* TS800 新增ControlBuzzer
+
+v2.0.1 R0  2019/08/20
+	* UHF class 變更Set/Get Frequency方法的參數
+	* UHF class 新增Set/Get TagPresentEventThreshold方法
+	* UHF class 新增Set/Get TagRemoveEventThreshold方法
+	* UHF class 移除Set/Get OutputInterface方法
+	* UHF class 移除Set/Get DecodedType方法
+	* UHF class 移除Set/Get EventType方法
+	
+	* TS100 新增Set/Get OutputInterface方法
+	* TS100 新增Set/Get EventType方法
+	* TS100 新增Set/Get Filter方法 (取代原本Set/Get DecodedType)
+	* TS100 新增StartInventoryEx 方法
+
+	* TS800 新增Set/Get OutputInterface方法
+
+	* PostDataDelimiter 增加列舉值 TAB
+	* TagPresentedType 列舉值變更 (改為開啟TagRemoveEvent的值)
+	* 列舉 DecodedType 變更名稱為 TagDataEncodeType，並更改原本 TAG_DATA = &H8 的列舉值名稱為 RAW_DATA
+	* OutputInterface 增加列舉值Default  (TS800與MU400H專用)[For舊的設定值]
+
+v2.0.0 R4  2019/08/15
+	* UHF class 新增Event OnTagRemoved
+	* TCPDataReceiver class 新增Event OnTagRemoved
+
+v2.0.0 R3  2019/07/01
+	* 變更TCPTagData中DataInfo 內  DataType 列舉值
+		UDC_BCD = &HBA00
+		UDC_ASCII = &HBA01
+
+v2.0.0 R2  2019/07/01
+	* 修正TCPTagData中DataInfo的ToString解析方式
+
+V2.0.0 R1  2019/06/26
+	* 變更OnTagDataReceived的參數 sender 類型改為 Object
+
+V2.0.0 R0  2019/06/17
+	* 新增CLASS HOST, TS100, TS800
+
+	* UHF CLASS移除以下
+		Function EnableKeyboardOutput
+		Property KeyboardOutputEnabled	
+
+	* UHF中 SetDecodedType 與 GetDecodedType 改寫，前者變更帶入參數；後者變更回傳參數
+		Public Function SetDecodedType(ByVal isTemporary As Boolean, ByVal decodedType As List(Of DecodedType)) As Boolean
+		Public Function GetDecodedType(ByVal isTemporary As Boolean) As List(Of DecodedType)
+
+	* UHF 新增 GetEventType, SetEventType, GetOutputInterface, SetOutputInterface
+
+	* UHF Class 部分功能分別移至HOST, TS100, TS800
+		HOST:
+			Property NetDeviceSearcherEnabled
+			Event OnPortStateChanged
+			Enum PortState
+			Function GetPortName
+			Function GetPortCount
+
+		TS100:
+			Public Function ControlBuzzer(ByVal buzzerAction As BuzzerAction) As Boolean
+			Public Function SetBuzzerOperationMode(ByVal isTemporary As Boolean, ByVal buzzerOperationMode As BuzzerOperationMode) As Boolean
+			Public Function GetBuzzerOperationMode(ByVal isTemporary As Boolean) As BuzzerOperationMode
+			Public Function SetKeyboardOutputFormat(ByVal isTemporary As Boolean, ByVal outputFormat As KeyboardOutputFormat) As Boolean
+			Public Function GetKeyboardOutputFormat(ByVal isTemporary As Boolean) As KeyboardOutputFormat
+
+		TS800:
+			Public Event OnIOStateChanged(ByVal sender As Object, ByVal ioEventArgs As IOEventArgs)
+			Public ReadOnly Property OutputPin0State() As IOState
+			Public ReadOnly Property OutputPin1State() As IOState
+			Public ReadOnly Property OutputPin2State() As IOState
+			Public ReadOnly Property InputPin0State() As IOState
+			Public Function SetIOState(ByVal ioNumber As IONumber, ByVal ioState As IOState) As Boolean
+			Public Function GetIOState() As Boolean
+			Public Function SetTriggerType(ByVal isTemporary As Boolean, ByVal triggerType As TriggerType) As Boolean
+			Public Function GetTriggerType(ByVal isTemporary As Boolean) As TriggerType
+
+	* 整理所有的Enumeration，全部放到Namespace Parameters下
+
+V1.1.0 R1  2019/05/23
+	* 變更namespace
+	* 變更TCPTagData內的屬性名稱與部分架構
+
+V1.1.0 R0  2019/05/15
+	* Class UHF 新增Property - NetDeviceSearcherEnabled  控制是否搜尋Wifi裝置
+	* 新增Class TCPDataReceiver
+
+V1.0.0 R11 2019/04/29
+	* 修改Get類型的Function，加入isTemporary的參數，供使用者選擇要取得register or EEPROM的內容
+	* 增加OnErrorOccurred的Event 與 errorCode的列舉及相對應的錯誤內容字串取得
+	* 新增Q value的SET與GET
+	* 新增TARGET的SET與GET
+	* 新增SESSION的SET與GET
+	* 更新UM800L Library
+
+V1.0.0 R10 2019/03/27
+	* 修改startInventory方法的參數與內容
+	* 修改initializeSettings的內容
+	* 新增SetTriggerType
+	* 新增GetTriggerType
+	* 新增列舉 TriggerType		
+	* 新增SetRfSensitivity
+	* 新增GetRfSensitivity
+	* 新增列舉 RfInputSensitivityLevel
+	* 刪除EnterLevelControl 新增 SetScanMode方法  (兩者都是private)
+	* 新增Private Enum ScanMode
+
+V1.0.0 R9 2019/02/23
+	* 將部分CLASS隱私層級重設
+	* 修正getSdkVersion回傳錯誤版本資訊
+	* WriteTag 與 WriteEpc 方法新增多型 (可對特定的EPC TAG進行寫入)
+
+V1.0.0 R8 2019/01/23
+	* 進階到64bit與32bit皆相容
+	* Compile時，output分成.Net2 跟 .Net4 兩種 (compile時請注意各project的application部分target framework設定是否正確)
+	* 修改取得RFPower值時檢查取得值並使其回傳在1~27的範圍內
+	* 刪除GIGATMS.UHF.Parameters中的DeviceInformationFormat class
+	* 刪除GetDeviceInformation
+	* 新增GetRomVersion method
+	* 新增GetDeviceName method
+	* 新增SdkVersion property
+
+V1.0.0 R7 2019/01/07	
+	* Added enumberation BuzzerOperationMode
+	* Motified EnableBuzzer method (change the parameter from boolean to BuzzerOperationMode) to SetBuzzerOperationMode
+	* Deleted Property BuzzerEnabled and Added GetBuzzerOperationMode
+	* The following methods add a new parameter named isTemporary : 
+		1. EnableKeyboardOutput
+		2. SetOutputFormat
+		3. SetDecodedType
+		4. SetRfPower
+		5. SetFrequency
+
+V1.0.0 R6 2018/12/05
+	* Motified the TagInformationFormat of GIGATMS.UHF.Parameters
+	* Added enumeration TagPresentedType
+	* Motified StartInventory method (Added TagPresentedType parameter)
+	* Added SetRfPower method (Range = 1~27  If out of this range, program will set 11 as default)
+	* Added GetRfPower method
+	* Added SetFrequency Method
+	* Added GetFrequency Method
+
+V1.0.0 R5 2018/11/13		
+	* Added enumeration BuzzerActionConstants
+	* Added ControlBuzzer method
+	* Added EnableBuzzer method
+	* Added BuzzerEnabled Property	
+	* Added EnableKeyboardInterface method
+	* Added KeyboardInterfaceEnabled Property
+	* Added enumeration TagDataFormat
+	* Added enumeration PostDataDelimiter
+	* Added sub class OutputFormat
+	* Added Set/Get OutputFormat method
+	* Added enumeration DecodedType
+	* Added Set/Get DecodedType method
+	* Added WriteEPC method
+
+V1.0.0 R4 2018/10/8
+	* Added enumeration MemoryBank
+	* Added ReadData method
+	* Added WriteData method
+
+V1.0.0 R3 2018/5/30
+	* Renamed the Namespace and Assembly from UR0250Lib to GIGATMS.UHF
+	* Motified the function of GetIOState
+	* Added the Global variable _ioStateList
+	* Added three readonly properties IO0State, IO1State, and IO2State
+
+V1.0.0 R2 2018/3/31
+	* Modified the member of GPIO enumeration from Channel_x to Port_x
+
+V1.0.0 R1 2018/3/30
+Add:
+	* Added OnIOStateChanged event
+	* Added ControlIOState method
+	* Added QueryIOState method	
