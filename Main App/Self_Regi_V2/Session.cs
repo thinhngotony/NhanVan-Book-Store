@@ -8,7 +8,7 @@ using static SelfRegi_V2.Front;
 
 namespace SelfRegi_V2
 {
-    class Session
+    class Session 
     {
         //TS_800////TS_800////TS_800////TS_800////TS_800////TS_800////TS_800////TS_800////TS_800////TS_800////TS_800//
         public static Host _host = new Host();

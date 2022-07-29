@@ -51,8 +51,8 @@ namespace SelfRegi_V2
             this.txtPName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtCCode = new System.Windows.Forms.TextBox();
-            this.txtArtist = new System.Windows.Forms.TextBox();
+            this.txtMakerName = new System.Windows.Forms.TextBox();
+            this.txtProductID = new System.Windows.Forms.TextBox();
             this.txtPrice = new System.Windows.Forms.TextBox();
             this.lProductType = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -257,8 +257,8 @@ namespace SelfRegi_V2
             this.tableLayoutPanel1.Controls.Add(this.txtPName, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.label4, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.label6, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.txtCCode, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.txtArtist, 1, 6);
+            this.tableLayoutPanel1.Controls.Add(this.txtMakerName, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.txtProductID, 1, 6);
             this.tableLayoutPanel1.Controls.Add(this.txtPrice, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.lProductType, 1, 5);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
@@ -275,6 +275,7 @@ namespace SelfRegi_V2
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(631, 460);
             this.tableLayoutPanel1.TabIndex = 25;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
@@ -300,6 +301,7 @@ namespace SelfRegi_V2
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(195, 24);
             this.label5.TabIndex = 12;
+            this.label5.Text = "Product ID";
             // 
             // label8
             // 
@@ -310,7 +312,7 @@ namespace SelfRegi_V2
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(195, 24);
             this.label8.TabIndex = 22;
-            this.label8.Text = "C_Code";
+            this.label8.Text = "Vendor";
             // 
             // txtPName
             // 
@@ -351,32 +353,33 @@ namespace SelfRegi_V2
             this.label6.TabIndex = 13;
             this.label6.Text = "Price";
             // 
-            // txtCCode
+            // txtMakerName
             // 
-            this.txtCCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCCode.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtCCode.Font = new System.Drawing.Font("MS Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.txtCCode.Location = new System.Drawing.Point(206, 216);
-            this.txtCCode.MaxLength = 4;
-            this.txtCCode.Name = "txtCCode";
-            this.txtCCode.ReadOnly = true;
-            this.txtCCode.Size = new System.Drawing.Size(421, 24);
-            this.txtCCode.TabIndex = 2;
-            this.txtCCode.TextChanged += new System.EventHandler(this.txtCCode_TextChanged);
-            this.txtCCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCCode_KeyDown);
-            this.txtCCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCCode_KeyPress);
+            this.txtMakerName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtMakerName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtMakerName.Font = new System.Drawing.Font("MS Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.txtMakerName.Location = new System.Drawing.Point(206, 216);
+            this.txtMakerName.MaxLength = 4;
+            this.txtMakerName.Name = "txtMakerName";
+            this.txtMakerName.ReadOnly = true;
+            this.txtMakerName.Size = new System.Drawing.Size(421, 24);
+            this.txtMakerName.TabIndex = 2;
+            this.txtMakerName.TextChanged += new System.EventHandler(this.txtMakerName_TextChanged);
+            this.txtMakerName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtMakerName_KeyDown);
+            this.txtMakerName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMakerName_KeyPress);
             // 
-            // txtArtist
+            // txtProductID
             // 
-            this.txtArtist.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtArtist.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtArtist.Font = new System.Drawing.Font("MS Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.txtArtist.Location = new System.Drawing.Point(206, 413);
-            this.txtArtist.Name = "txtArtist";
-            this.txtArtist.ReadOnly = true;
-            this.txtArtist.Size = new System.Drawing.Size(421, 24);
-            this.txtArtist.TabIndex = 4;
-            this.txtArtist.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtArtist_KeyDown);
+            this.txtProductID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtProductID.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtProductID.Font = new System.Drawing.Font("MS Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.txtProductID.Location = new System.Drawing.Point(206, 413);
+            this.txtProductID.Name = "txtProductID";
+            this.txtProductID.ReadOnly = true;
+            this.txtProductID.Size = new System.Drawing.Size(421, 24);
+            this.txtProductID.TabIndex = 4;
+            this.txtProductID.TextChanged += new System.EventHandler(this.txtProductID_TextChanged);
+            this.txtProductID.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtProductID_KeyDown);
             // 
             // txtPrice
             // 
@@ -554,7 +557,7 @@ namespace SelfRegi_V2
         private System.Windows.Forms.Label lNew;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TextBox txtPrice;
-        private System.Windows.Forms.TextBox txtArtist;
+        private System.Windows.Forms.TextBox txtProductID;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lProductType;
@@ -571,7 +574,7 @@ namespace SelfRegi_V2
         private System.Windows.Forms.Button btnConnect;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtCCode;
+        private System.Windows.Forms.TextBox txtMakerName;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.RadioButton btnDeleteAuto;
         private System.Windows.Forms.RadioButton btnInsert;

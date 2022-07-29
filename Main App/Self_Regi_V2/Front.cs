@@ -32,6 +32,7 @@ namespace SelfRegi_V2
             //startDialog();
             //RestartWebPOS();
             InitializeComponent();
+            //txtRfid.DataBindings.Add("Text",Session,"rfidCode",true,DataSourceUpdateMode.Never);
             this.StartPosition = FormStartPosition.Manual;
             this.CenterToScreen();
             init();
@@ -164,8 +165,8 @@ namespace SelfRegi_V2
             //lJanCode.Text = Session.barcode;
 
             txtPrice.Text = Session.product.price.ToString();
-            txtCCode.Text = Session.product.ccode;
-            txtArtist.Text = Session.product.artist_name;
+            txtMakerName.Text = Session.product.maker_name;
+            txtProductID.Text = Session.product.product_id;
             barcode_state = true;
 
         }
@@ -179,21 +180,21 @@ namespace SelfRegi_V2
                 Session.barcode = "";
                 Session.rfidcode = "";
                 
-                txtCCode.Text = "";
+                txtMakerName.Text = "";
                 txtPName.Text = "";
                 lProductType.Text = "";
                 lJanCode.Text = "";
                 lRCode.Text = "";
-                txtArtist.Text = "";
+                txtProductID.Text = "";
                 txtPrice.Text = "";
                 txtRfid.Text = "";
                 txtJan.Text = "";
             }
             if (mode == 2)
             {
-                txtCCode.Text = "";
+                txtMakerName.Text = "";
                 txtPName.Text = "";
-                txtArtist.Text = "";
+                txtProductID.Text = "";
                 txtPrice.Text = "";
             }
             if (mode == 3)
@@ -207,12 +208,12 @@ namespace SelfRegi_V2
                 txtJan.Text = "";
                 lRCode.Text = "";
                 lJanCode.Text = "";
-                txtCCode.Text = "";
+                txtMakerName.Text = "";
                 txtPName.Text = "";
                 lProductType.Text = "";
                 lJanCode.Text = "";
                 lRCode.Text = "";
-                txtArtist.Text = "";
+                txtProductID.Text = "";
                 txtPrice.Text = "";
                 //txtRfid.Text = "";
                 //txtJan.Text = "";
@@ -223,15 +224,15 @@ namespace SelfRegi_V2
             if (mode == 1)
             {
                 txtPName.Enabled = false;
-                txtCCode.Enabled = false;
+                txtMakerName.Enabled = false;
                 txtPrice.Enabled = false;
-                txtArtist.Enabled = false;
+                txtProductID.Enabled = false;
             } else if (mode == 2)
             {
                 txtPName.Enabled = true;
-                txtCCode.Enabled = true;
+                txtMakerName.Enabled = true;
                 txtPrice.Enabled = true;
-                txtArtist.Enabled = true;
+                txtProductID.Enabled = true;
             }
         }
         public void updateLabel()
@@ -239,8 +240,8 @@ namespace SelfRegi_V2
             txtPName.Text = Session.product.media_name;
             //Remove for NV
             lProductType.Text = Session.product.rf_goods_type;
-            //txtArtist.Text = Session.product.tax_type;
-            txtArtist.Text = "";
+            //txtProductID.Text = Session.product.tax_type;
+            txtProductID.Text = "";
 
             lJanCode.Text = Session.barcode;
             lRCode.Text = Session.product.RFIDcode;
@@ -271,10 +272,15 @@ namespace SelfRegi_V2
                 // Extract value from response data
 
                 dynamic data = JObject.Parse(content);
+                Console.WriteLine(data);
                 if (content != "") { 
                 Session.product.goods_name = data.products[0].title;
                 Session.product.rf_goods_type = data.products[0].product_type;
                 Session.product.price = data.products[0].variants[0].price;
+
+                Session.product.maker_name = data.products[0].vendor;
+                Session.product.product_id = data.products[0].id;
+                  
                 // Displayed in the user interface
                 api_message = "Received data from server successfully";
                 
@@ -400,7 +406,8 @@ namespace SelfRegi_V2
                     drgm_price_tax_off = Session.product.price,
                     drgm_cost_rate = Session.product.cost_rate,
                     drgm_cost_price = Session.product.cost_price,
-                    drgm_media_cd = Session.product.media_cd
+                    drgm_media_cd = Session.product.media_cd,
+                    drgm_product_id = Session.product.product_id
 
                 });
 
@@ -679,7 +686,7 @@ namespace SelfRegi_V2
                 btnDeleteManual.Enabled = true;
                 Session.product.goods_name = txtPName.Text;
                 Session.product.price = Int32.Parse(txtPrice.Text);
-                Session.product.artist_name = txtArtist.Text;
+                Session.product.artist_name = txtProductID.Text;
 
                 string product_update = String.Format("\n{0},{1},{2},{3},{4},{5},{6},{7}\n",
                         jan_cd, "", txtPName.Text, "1", txtPrice.Text, "0", "", "1");
@@ -694,7 +701,7 @@ namespace SelfRegi_V2
                 panel2.Focus();
                 //panel2.Focus();
                 txtPName.ReadOnly = true;
-                txtArtist.ReadOnly = true;
+                txtProductID.ReadOnly = true;
                 txtPrice.ReadOnly = true;
 
                 richTextBox1.Text += DateTime.Now.ToString("hh:mm:ss: ") + api_message + "\n";
@@ -859,10 +866,10 @@ namespace SelfRegi_V2
                     //            api_message = "";
 
                     //            //lNew.Text = " データが存在しません。";
-                    //            txtCCode.ReadOnly = false;
+                    //            txtMakerName.ReadOnly = false;
                     //            lNew.Visible = true;
                     //            txtPName.ReadOnly = false;
-                    //            txtArtist.ReadOnly = false;
+                    //            txtProductID.ReadOnly = false;
                     //            txtPrice.ReadOnly = false;
                     //            //btnRegister.BackColor = Color.Teal;
                     //            //btnRegister.ForeColor = Color.WhiteSmoke;
@@ -965,10 +972,14 @@ namespace SelfRegi_V2
 
                     //opos.OPOS_StopReading(Session.OPOSRFID1);
 
-                    Device.DisConnectDevice(Session._ts800);
+                    if (Device.StopReading(Session._ts800)) { 
                     btnConnect.Text = "StartReading";
                     richTextBox1.Text += DateTime.Now.ToString("hh:mm:ss") + ": Device stopped Reading \n";
                     resetLabel(1);
+                    } else
+                    {
+                        richTextBox1.Text += DateTime.Now.ToString("hh:mm:ss") + ": Unknown error, cannot stop reading \n";
+                    }
                     break;
                 case "StartReading":
 
@@ -1006,9 +1017,9 @@ namespace SelfRegi_V2
             btnDeleteAuto.Enabled = true;
             btnDeleteManual.Enabled = true;
             txtPrice.ReadOnly = true;
-            txtArtist.ReadOnly = true;
+            txtProductID.ReadOnly = true;
             txtPName.ReadOnly = true;
-            txtCCode.ReadOnly = true;
+            txtMakerName.ReadOnly = true;
             opos.OPOS_StartReading(Session.OPOSRFID1);
             btnConnect.Text = "StopReading";
             btnConnect.Visible = true; ;
@@ -1032,12 +1043,12 @@ namespace SelfRegi_V2
             }
         }
 
-        private void txtCCode_TextChanged(object sender, EventArgs e)
+        private void txtMakerName_TextChanged(object sender, EventArgs e)
         {
 
-            if (!txtCCode.Text.Equals(""))
+            if (!txtMakerName.Text.Equals(""))
             {
-                //Session.product.ccode = txtCCode.Text;
+                //Session.product.ccode = txtMakerName.Text;
                 //if (!txtPrice.Text.Equals(""))
                 //{
                 //    Session.product.Jancode2 = getJan2();
@@ -1057,7 +1068,7 @@ namespace SelfRegi_V2
             }
         }
 
-        private void txtCCode_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtMakerName_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
 
@@ -1075,7 +1086,7 @@ namespace SelfRegi_V2
             {
                 //Session.product.price = Int32.Parse(txtPrice.Text);
 
-                //if (!txtCCode.Text.Equals(""))
+                //if (!txtMakerName.Text.Equals(""))
                 //{
                 //    Session.product.Jancode2 = getJan2();
                 //    lProductType.Text = Session.product.Jancode2;
@@ -1179,10 +1190,10 @@ namespace SelfRegi_V2
             //                api_message = "";
 
             //                lNew.Text = " データが存在しません。";
-            //                txtCCode.ReadOnly = false;
+            //                txtMakerName.ReadOnly = false;
             //                lNew.Visible = true;
             //                txtPName.ReadOnly = false;
-            //                txtArtist.ReadOnly = false;
+            //                txtProductID.ReadOnly = false;
             //                txtPrice.ReadOnly = false;
             //                btnRegister.BackColor = Color.Teal;
             //                btnRegister.ForeColor = Color.WhiteSmoke;
@@ -1231,11 +1242,11 @@ namespace SelfRegi_V2
         {
             if (e.KeyCode == Keys.Tab)
             {
-                txtCCode.Focus();
+                txtMakerName.Focus();
             }
         }
 
-        private void txtCCode_KeyDown(object sender, KeyEventArgs e)
+        private void txtMakerName_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Tab || e.KeyCode == Keys.Enter)
             {
@@ -1247,11 +1258,11 @@ namespace SelfRegi_V2
         {
             if (e.KeyCode == Keys.Tab || e.KeyCode == Keys.Enter)
             {
-                txtArtist.Focus();
+                txtProductID.Focus();
             }
         }
 
-        private void txtArtist_KeyDown(object sender, KeyEventArgs e)
+        private void txtProductID_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Tab || e.KeyCode == Keys.Enter)
             {
@@ -1263,7 +1274,7 @@ namespace SelfRegi_V2
         {
             if (e.KeyCode == Keys.Enter)
             {
-                txtCCode.Focus();
+                txtMakerName.Focus();
             }
         }
 
@@ -1323,6 +1334,7 @@ namespace SelfRegi_V2
             public string rf_goods_type { set; get; }
             public double price_intax { set; get; }
             public float cost_rate { set; get; }
+            public string product_id { set; get; }
 
             public ProductData()
             {
@@ -1336,6 +1348,7 @@ namespace SelfRegi_V2
                 price = 0;
                 this.goods_name = "";
                 this.rf_goods_type = "";
+                this.product_id = "";
             }
         }
 
@@ -3797,6 +3810,11 @@ namespace SelfRegi_V2
         }
 
         private void Front_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtProductID_TextChanged(object sender, EventArgs e)
         {
 
         }

@@ -7,7 +7,7 @@
     <ProjectGuid>{B5F746F5-3B08-49BA-9B31-3F91EC4381CA}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>SelfRegi_V2</RootNamespace>
-    <AssemblyName>SelfRegi_V2</AssemblyName>
+    <AssemblyName>ProductRegister</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -48,6 +48,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>addpro.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="GIGATMS.UHF">
@@ -192,7 +195,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="GHIDIO.dll">
+    <Content Include="addpro.ico" />
+  </ItemGroup>
+  <ItemGroup>
+  <Content Include="GHIDIO.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="GHIDIOx64.dll">

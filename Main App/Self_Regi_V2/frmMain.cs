@@ -24,7 +24,7 @@ namespace SelfRegi_V2
             InitializeComponent();
             //ConnectDevice(Session._ts800, Session._host);
             //StartInventory(Session._ts800);
-            //deviceBindingEvent();
+            Session._ts800.OnTagPresented += _ts800_OnTagPresented;
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -34,10 +34,6 @@ namespace SelfRegi_V2
             //deviceBindingEvent();
         }
 
-        private void deviceBindingEvent()
-        {
-            Session._ts800.OnTagPresented += _ts800_OnTagPresented;
-        }
 
         private void _ts800_OnTagPresented(object sender, com.gigatms.Parameters.TagInformationFormat tagInformation)
         {
@@ -54,8 +50,11 @@ namespace SelfRegi_V2
 
             }
             Console.WriteLine(rfid);
+            Session.rfidcode = rfid;
+            Session.front.updateView();
 
-            
+
+
         }
 
         private void frmMain_KeyPress(object sender, KeyPressEventArgs e)
@@ -132,6 +131,14 @@ namespace SelfRegi_V2
                 Console.WriteLine("CONNECT DEVICE: ===> Failed to connect device!");
             }
 
+        }
+
+        public bool StopReading(TS800 _ts800)
+        {
+
+            if (_ts800.StopInventory()) 
+               return true;
+               return false;
         }
 
         public void DisConnectDevice(TS800 _ts800)
