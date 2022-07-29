@@ -64,9 +64,11 @@ namespace SelfRegi_V2
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.btnRegister = new System.Windows.Forms.Button();
             this.btnConnect = new System.Windows.Forms.Button();
+            this.Image = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Image)).BeginInit();
             this.SuspendLayout();
             // 
             // btnExit
@@ -219,7 +221,7 @@ namespace SelfRegi_V2
             this.panel2.Controls.Add(this.tableLayoutPanel1);
             this.panel2.Location = new System.Drawing.Point(3, 169);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(631, 460);
+            this.panel2.Size = new System.Drawing.Size(698, 460);
             this.panel2.TabIndex = 25;
             // 
             // label7
@@ -276,7 +278,7 @@ namespace SelfRegi_V2
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(631, 460);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(698, 460);
             this.tableLayoutPanel1.TabIndex = 25;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
@@ -287,7 +289,7 @@ namespace SelfRegi_V2
             this.label1.Font = new System.Drawing.Font("MS Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label1.Location = new System.Drawing.Point(4, 151);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(195, 24);
+            this.label1.Size = new System.Drawing.Size(217, 24);
             this.label1.TabIndex = 8;
             this.label1.Text = "Product Name";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -299,7 +301,7 @@ namespace SelfRegi_V2
             this.label5.Font = new System.Drawing.Font("MS Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label5.Location = new System.Drawing.Point(4, 413);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(195, 24);
+            this.label5.Size = new System.Drawing.Size(217, 24);
             this.label5.TabIndex = 12;
             this.label5.Text = "Product ID";
             // 
@@ -310,7 +312,7 @@ namespace SelfRegi_V2
             this.label8.Font = new System.Drawing.Font("MS Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label8.Location = new System.Drawing.Point(4, 216);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(195, 24);
+            this.label8.Size = new System.Drawing.Size(217, 24);
             this.label8.TabIndex = 22;
             this.label8.Text = "Vendor";
             // 
@@ -319,11 +321,11 @@ namespace SelfRegi_V2
             this.txtPName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPName.Font = new System.Drawing.Font("MS Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.txtPName.Location = new System.Drawing.Point(206, 151);
+            this.txtPName.Location = new System.Drawing.Point(228, 151);
             this.txtPName.MaxLength = 64;
             this.txtPName.Name = "txtPName";
             this.txtPName.ReadOnly = true;
-            this.txtPName.Size = new System.Drawing.Size(421, 24);
+            this.txtPName.Size = new System.Drawing.Size(466, 24);
             this.txtPName.TabIndex = 1;
             this.txtPName.TextChanged += new System.EventHandler(this.txtPName_TextChanged);
             this.txtPName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPName_KeyDown);
@@ -337,7 +339,7 @@ namespace SelfRegi_V2
             this.label4.Font = new System.Drawing.Font("MS Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label4.Location = new System.Drawing.Point(4, 346);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(195, 24);
+            this.label4.Size = new System.Drawing.Size(217, 24);
             this.label4.TabIndex = 11;
             this.label4.Text = "Product Type";
             this.label4.Click += new System.EventHandler(this.label4_Click);
@@ -349,7 +351,7 @@ namespace SelfRegi_V2
             this.label6.Font = new System.Drawing.Font("MS Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label6.Location = new System.Drawing.Point(4, 281);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(195, 24);
+            this.label6.Size = new System.Drawing.Size(217, 24);
             this.label6.TabIndex = 13;
             this.label6.Text = "Price";
             // 
@@ -358,11 +360,11 @@ namespace SelfRegi_V2
             this.txtMakerName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtMakerName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtMakerName.Font = new System.Drawing.Font("MS Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.txtMakerName.Location = new System.Drawing.Point(206, 216);
+            this.txtMakerName.Location = new System.Drawing.Point(228, 216);
             this.txtMakerName.MaxLength = 4;
             this.txtMakerName.Name = "txtMakerName";
             this.txtMakerName.ReadOnly = true;
-            this.txtMakerName.Size = new System.Drawing.Size(421, 24);
+            this.txtMakerName.Size = new System.Drawing.Size(466, 24);
             this.txtMakerName.TabIndex = 2;
             this.txtMakerName.TextChanged += new System.EventHandler(this.txtMakerName_TextChanged);
             this.txtMakerName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtMakerName_KeyDown);
@@ -373,10 +375,10 @@ namespace SelfRegi_V2
             this.txtProductID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtProductID.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtProductID.Font = new System.Drawing.Font("MS Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.txtProductID.Location = new System.Drawing.Point(206, 413);
+            this.txtProductID.Location = new System.Drawing.Point(228, 413);
             this.txtProductID.Name = "txtProductID";
             this.txtProductID.ReadOnly = true;
-            this.txtProductID.Size = new System.Drawing.Size(421, 24);
+            this.txtProductID.Size = new System.Drawing.Size(466, 24);
             this.txtProductID.TabIndex = 4;
             this.txtProductID.TextChanged += new System.EventHandler(this.txtProductID_TextChanged);
             this.txtProductID.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtProductID_KeyDown);
@@ -386,11 +388,11 @@ namespace SelfRegi_V2
             this.txtPrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPrice.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPrice.Font = new System.Drawing.Font("MS Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.txtPrice.Location = new System.Drawing.Point(206, 281);
+            this.txtPrice.Location = new System.Drawing.Point(228, 281);
             this.txtPrice.MaxLength = 5;
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.ReadOnly = true;
-            this.txtPrice.Size = new System.Drawing.Size(421, 24);
+            this.txtPrice.Size = new System.Drawing.Size(466, 24);
             this.txtPrice.TabIndex = 3;
             this.txtPrice.TextChanged += new System.EventHandler(this.txtPrice_TextChanged);
             this.txtPrice.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPrice_KeyDown);
@@ -401,9 +403,9 @@ namespace SelfRegi_V2
             this.lProductType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lProductType.AutoSize = true;
             this.lProductType.Font = new System.Drawing.Font("MS Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.lProductType.Location = new System.Drawing.Point(206, 346);
+            this.lProductType.Location = new System.Drawing.Point(228, 346);
             this.lProductType.Name = "lProductType";
-            this.lProductType.Size = new System.Drawing.Size(421, 24);
+            this.lProductType.Size = new System.Drawing.Size(466, 24);
             this.lProductType.TabIndex = 17;
             this.lProductType.Click += new System.EventHandler(this.lProductType_Click);
             // 
@@ -414,7 +416,7 @@ namespace SelfRegi_V2
             this.label2.Font = new System.Drawing.Font("MS Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label2.Location = new System.Drawing.Point(4, 21);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(195, 24);
+            this.label2.Size = new System.Drawing.Size(217, 24);
             this.label2.TabIndex = 9;
             this.label2.Text = "RFID";
             this.label2.Click += new System.EventHandler(this.label2_Click);
@@ -424,9 +426,9 @@ namespace SelfRegi_V2
             this.lRCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lRCode.AutoSize = true;
             this.lRCode.Font = new System.Drawing.Font("MS Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.lRCode.Location = new System.Drawing.Point(206, 21);
+            this.lRCode.Location = new System.Drawing.Point(228, 21);
             this.lRCode.Name = "lRCode";
-            this.lRCode.Size = new System.Drawing.Size(421, 24);
+            this.lRCode.Size = new System.Drawing.Size(466, 24);
             this.lRCode.TabIndex = 15;
             this.lRCode.Click += new System.EventHandler(this.lRCode_Click);
             // 
@@ -437,7 +439,7 @@ namespace SelfRegi_V2
             this.label3.Font = new System.Drawing.Font("MS Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label3.Location = new System.Drawing.Point(4, 86);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(195, 24);
+            this.label3.Size = new System.Drawing.Size(217, 24);
             this.label3.TabIndex = 10;
             this.label3.Text = "Jancode";
             // 
@@ -446,9 +448,9 @@ namespace SelfRegi_V2
             this.lJanCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lJanCode.AutoSize = true;
             this.lJanCode.Font = new System.Drawing.Font("MS Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.lJanCode.Location = new System.Drawing.Point(206, 86);
+            this.lJanCode.Location = new System.Drawing.Point(228, 86);
             this.lJanCode.Name = "lJanCode";
-            this.lJanCode.Size = new System.Drawing.Size(421, 24);
+            this.lJanCode.Size = new System.Drawing.Size(466, 24);
             this.lJanCode.TabIndex = 16;
             this.lJanCode.Click += new System.EventHandler(this.lJanCode_Click);
             // 
@@ -469,9 +471,9 @@ namespace SelfRegi_V2
             // btnClear
             // 
             this.btnClear.Font = new System.Drawing.Font("MS Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.btnClear.Location = new System.Drawing.Point(654, 602);
+            this.btnClear.Location = new System.Drawing.Point(720, 596);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(354, 33);
+            this.btnClear.Size = new System.Drawing.Size(287, 33);
             this.btnClear.TabIndex = 12;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
@@ -481,10 +483,10 @@ namespace SelfRegi_V2
             // 
             this.richTextBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.richTextBox1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox1.Location = new System.Drawing.Point(654, 169);
+            this.richTextBox1.Location = new System.Drawing.Point(720, 479);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(354, 427);
+            this.richTextBox1.Size = new System.Drawing.Size(287, 103);
             this.richTextBox1.TabIndex = 28;
             this.richTextBox1.Text = "";
             this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
@@ -516,12 +518,21 @@ namespace SelfRegi_V2
             this.btnConnect.UseVisualStyleBackColor = false;
             this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
             // 
+            // Image
+            // 
+            this.Image.Location = new System.Drawing.Point(721, 169);
+            this.Image.Name = "Image";
+            this.Image.Size = new System.Drawing.Size(286, 304);
+            this.Image.TabIndex = 29;
+            this.Image.TabStop = false;
+            // 
             // Front
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1024, 768);
+            this.Controls.Add(this.Image);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.richTextBox1);
@@ -542,6 +553,7 @@ namespace SelfRegi_V2
             this.panel2.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Image)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -581,6 +593,7 @@ namespace SelfRegi_V2
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.RadioButton btnDeleteManual;
         private System.Windows.Forms.Button btnDeleteSingle2;
+        private System.Windows.Forms.PictureBox Image;
     }
 }
 

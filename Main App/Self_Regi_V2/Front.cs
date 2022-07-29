@@ -179,7 +179,8 @@ namespace SelfRegi_V2
                 Session.product = new ProductData();
                 Session.barcode = "";
                 Session.rfidcode = "";
-                
+                Image.Image = Image.BackgroundImage;
+
                 txtMakerName.Text = "";
                 txtPName.Text = "";
                 lProductType.Text = "";
@@ -204,6 +205,7 @@ namespace SelfRegi_V2
                 //rfid_cd = "";
                 Session.product.RFIDcode = "";
                 Session.barcode = "";
+                Image.Image = Image.BackgroundImage;
                 barcode = "";
                 txtJan.Text = "";
                 lRCode.Text = "";
@@ -254,14 +256,14 @@ namespace SelfRegi_V2
         {
             try
             {
+                //Image.CancelAsync();
+                Image.Load("noimage.png");
                 barcode_state = false;
                 Session.haravan_sub = "page=1&barcode=";
                 Session.product = new ProductData();
                 HttpClient api_client = new HttpClient();
                 api_client.BaseAddress = new Uri(Session.haravan_api);
                 api_client.DefaultRequestHeaders.Add("Authorization", Session.haravan_key_name + " " + Session.haravan_key_pass);
-
-                Console.WriteLine(api_client.DefaultRequestHeaders);
                 var builder = new UriBuilder(Session.haravan_api);
                 //builder.Query = Session.haravan_sub + Session.barcode;
                 builder.Query = Session.haravan_sub + Session.barcode;
@@ -272,17 +274,28 @@ namespace SelfRegi_V2
                 // Extract value from response data
 
                 dynamic data = JObject.Parse(content);
-                Console.WriteLine(data);
                 if (content != "") { 
                 Session.product.goods_name = data.products[0].title;
                 Session.product.rf_goods_type = data.products[0].product_type;
                 Session.product.price = data.products[0].variants[0].price;
-
                 Session.product.maker_name = data.products[0].vendor;
                 Session.product.product_id = data.products[0].id;
-                  
-                // Displayed in the user interface
-                api_message = "Received data from server successfully";
+                Session.product.image_url = data.products[0].images[0].src;
+                Console.WriteLine("Địa chỉ hình ảnh là "+ Session.product.image_url);
+                Image.SizeMode = PictureBoxSizeMode.StretchImage;
+
+                    if (Session.product.image_url != "")
+                    {
+                        Image.LoadAsync(Session.product.image_url);
+                    }
+                    else
+                    {
+                        Image.Load("noimage.png");
+                    }
+
+
+                    // Displayed in the user interface
+                    api_message = "Received data from server successfully";
                 
                 } else
                 {
@@ -1335,6 +1348,7 @@ namespace SelfRegi_V2
             public double price_intax { set; get; }
             public float cost_rate { set; get; }
             public string product_id { set; get; }
+            public string image_url { set; get; }
 
             public ProductData()
             {
@@ -1349,6 +1363,7 @@ namespace SelfRegi_V2
                 this.goods_name = "";
                 this.rf_goods_type = "";
                 this.product_id = "";
+                this.image_url = "";
             }
         }
 

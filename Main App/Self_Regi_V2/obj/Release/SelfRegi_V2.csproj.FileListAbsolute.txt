@@ -186,3 +186,5 @@ C:\Users\Tony\Desktop\2207\NV_TEC\Main App\Self_Regi_V2\bin\Release\AxInterop.OP
 C:\Users\Tony\Desktop\2207\NV_TEC\Main App\Self_Regi_V2\obj\Release\SelfRegi_V2.csproj.CopyComplete
 C:\Users\Tony\Desktop\2207\NV_TEC\Main App\Self_Regi_V2\obj\Release\ProductRegister.exe
 C:\Users\Tony\Desktop\2207\NV_TEC\Main App\Self_Regi_V2\obj\Release\ProductRegister.pdb
+C:\Users\Tony\Desktop\2207\NV_TEC\Main App\Self_Regi_V2\bin\Release\REGISMASTER_CONFIG.ini
+C:\Users\Tony\Desktop\2207\NV_TEC\Main App\Self_Regi_V2\bin\Release\noimage.png

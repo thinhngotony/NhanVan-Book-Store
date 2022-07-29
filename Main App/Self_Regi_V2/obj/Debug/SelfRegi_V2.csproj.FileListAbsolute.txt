@@ -229,3 +229,5 @@ C:\Users\Tony\Desktop\2207\NV_TEC\Main App\Self_Regi_V2\bin\Debug\ProductRegiste
 C:\Users\Tony\Desktop\2207\NV_TEC\Main App\Self_Regi_V2\bin\Debug\ProductRegister.pdb
 C:\Users\Tony\Desktop\2207\NV_TEC\Main App\Self_Regi_V2\obj\Debug\ProductRegister.exe
 C:\Users\Tony\Desktop\2207\NV_TEC\Main App\Self_Regi_V2\obj\Debug\ProductRegister.pdb
+C:\Users\Tony\Desktop\2207\NV_TEC\Main App\Self_Regi_V2\bin\Debug\REGISMASTER_CONFIG.ini
+C:\Users\Tony\Desktop\2207\NV_TEC\Main App\Self_Regi_V2\bin\Debug\noimage.png
